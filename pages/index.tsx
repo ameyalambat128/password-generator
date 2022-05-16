@@ -10,8 +10,9 @@ const Home: NextPage = () => {
       <Head>
         <title>Password Generator</title>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="/site.webmanifest" />
       </Head>
-      <main className="bg-gray-300 font-inter ">
+      <main className="bg-gray-300 font-inter">
         <Generator />
       </main>
     </div>

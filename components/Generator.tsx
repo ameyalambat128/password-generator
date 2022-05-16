@@ -26,11 +26,10 @@ const Generator: NextPage = () => {
   const [toggleIcon2, setToggleIcon2] = useState(true)
   const [toggleIcon3, setToggleIcon3] = useState(true)
   const [toggleIcon4, setToggleIcon4] = useState(true)
+  const [passwordResult, setPasswordResult] = useState('')
   const generatePassword = () => {
     const len = 10
-
-    let password = ''
-
+    let password = passwordResult
     if (toggleIcon1) {
       password += getUppercase()
     }
@@ -50,6 +49,7 @@ const Generator: NextPage = () => {
     for (let i = password.length; i < len; i++) {
       const x = generateX()
       password += x
+      setPasswordResult(password)
     }
   }
   const generateX = () => {
@@ -82,7 +82,7 @@ const Generator: NextPage = () => {
         </div>
         <div className="my-4 h-0.5 w-full bg-gray-300" />
         <div className="mb-4 shadow-sm">
-          <FormInput result="!password seen here!" />
+          <FormInput result={passwordResult} />
         </div>
         <div className="flex items-center justify-around">
           <div className="w-full pr-2">Contain Uppercase Characters </div>
@@ -92,7 +92,7 @@ const Generator: NextPage = () => {
               setToggleIcon1(!toggleIcon1)
             }}
           >
-            {toggleIcon1 ? <BiPlus /> : <FcCheckmark />}
+            {toggleIcon1 ? <FcCheckmark /> : <BiPlus />}
           </button>
         </div>
         <div className="flex items-center justify-around">
@@ -128,7 +128,10 @@ const Generator: NextPage = () => {
             {toggleIcon4 ? <BiPlus /> : <FcCheckmark />}
           </button>
         </div>
-        <button className="mt-4 flex w-full justify-center rounded-md bg-blue-500 p-2 font-semibold text-white shadow-sm">
+        <button
+          className="mt-4 flex w-full justify-center rounded-md bg-blue-500 p-2 font-semibold text-white shadow-sm"
+          onClick={() => generatePassword()}
+        >
           Generate
         </button>
       </div>
