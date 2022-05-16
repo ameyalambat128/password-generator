@@ -29,9 +29,7 @@ const Generator: NextPage = () => {
   const [passwordResult, setPasswordResult] = useState('')
   const generatePassword = () => {
     const len = 10
-
     let password = passwordResult
-
     if (toggleIcon1) {
       password += getUppercase()
     }
@@ -132,7 +130,7 @@ const Generator: NextPage = () => {
         </div>
         <button
           className="mt-4 flex w-full justify-center rounded-md bg-blue-500 p-2 font-semibold text-white shadow-sm"
-          onClick={generatePassword()}
+          onClick={() => generatePassword()}
         >
           Generate
         </button>
